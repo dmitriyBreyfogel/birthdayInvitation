@@ -265,9 +265,10 @@
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 0.45rem;
+      gap: 0.3rem;
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 0.84rem;
+      min-width: 0;
     }
 
     .calendar-grid div {
@@ -275,11 +276,12 @@
       display: grid;
       place-items: center;
       border-radius: 16px;
+      min-width: 0;
     }
 
     .weekday {
       color: var(--muted);
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 700;
       aspect-ratio: auto;
       padding-bottom: 0.2rem;
@@ -408,6 +410,15 @@
       .page {
         padding-left: 1rem;
         padding-right: 1rem;
+      }
+
+      .calendar-grid {
+        gap: 0.45rem;
+        font-size: 0.9rem;
+      }
+
+      .weekday {
+        font-size: 0.78rem;
       }
     }
 
