@@ -77,7 +77,7 @@
     .heart {
       position: absolute;
       bottom: -10vh;
-      color: rgba(216, 132, 154, 0.2);
+      color: rgba(250, 48, 89, 0.28);
       animation: drift linear infinite;
       user-select: none;
     }
@@ -527,14 +527,7 @@
   </style>
 </head>
 <body>
-  <div class="hearts" aria-hidden="true">
-    <span class="heart" style="left: 8%; --drift-x: -18px; animation-duration: 15s; animation-delay: -2s; font-size: 18px;">❤</span>
-    <span class="heart" style="left: 22%; --drift-x: 24px; animation-duration: 18s; animation-delay: -8s; font-size: 14px;">❤</span>
-    <span class="heart" style="left: 38%; --drift-x: -30px; animation-duration: 16s; animation-delay: -5s; font-size: 20px;">❤</span>
-    <span class="heart" style="left: 57%; --drift-x: 28px; animation-duration: 20s; animation-delay: -11s; font-size: 16px;">❤</span>
-    <span class="heart" style="left: 74%; --drift-x: -22px; animation-duration: 17s; animation-delay: -4s; font-size: 13px;">❤</span>
-    <span class="heart" style="left: 89%; --drift-x: 18px; animation-duration: 19s; animation-delay: -9s; font-size: 21px;">❤</span>
-  </div>
+  <div class="hearts" aria-hidden="true"></div>
 
   <main class="page">
     <section class="hero card reveal">
@@ -729,6 +722,34 @@
     });
 
     revealItems.forEach((item) => revealObserver.observe(item));
+  </script>
+
+  <script>
+    const heartsContainer = document.querySelector(".hearts");
+
+    function createHeart() {
+      const heart = document.createElement("span");
+      heart.className = "heart";
+      heart.textContent = "❤";
+
+      const left = Math.random() * 100;
+      const size = 16 + Math.random() * 12;
+      const drift = (Math.random() - 0.5) * 60;
+      const duration = 14 + Math.random() * 10;
+
+      heart.style.left = left + "%";
+      heart.style.fontSize = size + "px";
+      heart.style.setProperty("--drift-x", drift + "px");
+      heart.style.animationDuration = duration + "s";
+
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, duration * 1000);
+    }
+
+    setInterval(createHeart, 250);
   </script>
 </body>
 </html>
